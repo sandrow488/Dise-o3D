@@ -1,5 +1,12 @@
 <script setup lang="ts">
-import { d } from 'vue-router/dist/index-Cu9B0wDz.mjs'
+// Función para gestionar el inicio del arrastre
+const empezarArrastre = (event: DragEvent, rutaModelo: string) => {
+  if (event.dataTransfer) {
+    // Guardamos la ruta del archivo .glb en el evento
+    event.dataTransfer.setData('rutaModelo', rutaModelo)
+    event.dataTransfer.dropEffect = 'copy'
+  }
+}
 </script>
 
 <template>
@@ -8,7 +15,11 @@ import { d } from 'vue-router/dist/index-Cu9B0wDz.mjs'
     <p class="instrucciones">Arrastra los muebles a la habitación para añadirlos</p>
 
     <div class="ListaObjetos">
-      <div class="Card Sofa" draggable="true">
+      <div
+        class="Card Sofa"
+        draggable="true"
+        @dragstart="empezarArrastre($event, '/Models/Sofa.glb')"
+      >
         <div class="Icono bg-gris">
           <img src="/public/Imagenes/Muebles/sofa-de-plazas.png" alt="Sofá" />
         </div>
@@ -18,7 +29,11 @@ import { d } from 'vue-router/dist/index-Cu9B0wDz.mjs'
         </div>
       </div>
 
-      <div class="Card Mesa" draggable="true">
+      <div
+        class="Card Mesa"
+        draggable="true"
+        @dragstart="empezarArrastre($event, '/Models/Table.glb')"
+      >
         <div class="Icono bg-naranja">
           <img src="/public/Imagenes/Muebles/mesa.png" alt="Mesa" />
         </div>
@@ -28,7 +43,11 @@ import { d } from 'vue-router/dist/index-Cu9B0wDz.mjs'
         </div>
       </div>
 
-      <div class="Card Silla" draggable="true">
+      <div
+        class="Card Silla"
+        draggable="true"
+        @dragstart="empezarArrastre($event, '/Models/Chair.glb')"
+      >
         <div class="Icono bg-amarillo">
           <img src="/public/Imagenes/Muebles/silla.png" alt="Silla" />
         </div>
@@ -38,7 +57,11 @@ import { d } from 'vue-router/dist/index-Cu9B0wDz.mjs'
         </div>
       </div>
 
-      <div class="Card Cama" draggable="true">
+      <div
+        class="Card Cama"
+        draggable="true"
+        @dragstart="empezarArrastre($event, '/Models/Bed.glb')"
+      >
         <div class="Icono bg-purpura">
           <img src="/public/Imagenes/Muebles/cama.png" alt="Cama" />
         </div>
@@ -48,7 +71,11 @@ import { d } from 'vue-router/dist/index-Cu9B0wDz.mjs'
         </div>
       </div>
 
-      <div class="Card Lampara" draggable="true">
+      <div
+        class="Card Lampara"
+        draggable="true"
+        @dragstart="empezarArrastre($event, '/Models/Lamp.glb')"
+      >
         <div class="Icono bg-amarillo">
           <img src="/public/Imagenes/Muebles/lampara-de-escritorio.png" alt="Lámpara" />
         </div>
@@ -58,7 +85,11 @@ import { d } from 'vue-router/dist/index-Cu9B0wDz.mjs'
         </div>
       </div>
 
-      <div class="Card Estanteria" draggable="true">
+      <div
+        class="Card Estanteria"
+        draggable="true"
+        @dragstart="empezarArrastre($event, '/Models/Estanteria.glb')"
+      >
         <div class="Icono bg-verde">
           <img src="/public/Imagenes/Muebles/biblioteca.png" alt="Estantería" />
         </div>
