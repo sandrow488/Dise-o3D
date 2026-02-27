@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { DragControls } from 'three/examples/jsm/controls/DragControls.js'
 
 export function useThreeGame(canvasRef) {
   let scene, camera, renderer, controls, ground
@@ -8,6 +9,7 @@ export function useThreeGame(canvasRef) {
   const loader = new GLTFLoader()
   const raycaster = new THREE.Raycaster()
   const mouse = new THREE.Vector2()
+  const mueblesEnEscena = []
 
   function initThree() {
     scene = new THREE.Scene()
@@ -67,6 +69,21 @@ export function useThreeGame(canvasRef) {
     sunLight.position.set(5, 10, 7)
     scene.add(sunLight)
 
+    const dragControls = new DragControls(mueblesEnEscena, camera, renderer.domElement)
+    dragControls.transformGroup = true
+
+    dragControls.addEventListener('dragstart', function (event) {
+      controls.enabled = false
+    })
+
+    dragControls.addEventListener('drag', function (event) {
+      event.object.position.y = 0
+    })
+
+    dragControls.addEventListener('dragend', function (event) {
+      controls.enabled = true
+    })
+
     setupDropEvents()
 
     animate()
@@ -108,6 +125,7 @@ export function useThreeGame(canvasRef) {
 
         scene.add(modelo)
         console.log('Mueble añadido con éxito!')
+        mueblesEnEscena.push(modelo)
       },
       undefined,
       (error) => console.error('Error al cargar el mueble:', error),

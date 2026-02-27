@@ -5,7 +5,9 @@
       <p>Crea y personaliza tu espacio en 3D</p>
     </div>
     <div class="Botones">
-      <button><img src="/public/Imagenes/papelera-de-reciclaje.png" alt="" />Limpiar Todo</button>
+      <button @click="limpiarTodo">
+        <img src="/public/Imagenes/papelera-de-reciclaje.png" alt="" />Limpiar Todo
+      </button>
     </div>
   </div>
 </template>
@@ -54,3 +56,11 @@
   margin-top: -5px;
 }
 </style>
+<script setup>
+function limpiarTodo() {
+  mueblesEnEscena.forEach((mueble) => {
+    scene.remove(mueble)
+  })
+  mueblesEnEscena.length = 0
+}
+</script>

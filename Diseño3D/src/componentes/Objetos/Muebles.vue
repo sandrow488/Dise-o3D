@@ -1,8 +1,6 @@
 <script setup lang="ts">
-// Función para gestionar el inicio del arrastre
 const empezarArrastre = (event: DragEvent, rutaModelo: string) => {
   if (event.dataTransfer) {
-    // Guardamos la ruta del archivo .glb en el evento
     event.dataTransfer.setData('rutaModelo', rutaModelo)
     event.dataTransfer.dropEffect = 'copy'
   }
@@ -96,6 +94,32 @@ const empezarArrastre = (event: DragEvent, rutaModelo: string) => {
         <div class="Contenido">
           <h2>Estantería</h2>
           <p>Arrastra para añadir</p>
+        </div>
+      </div>
+      <div
+        class="Card Atena"
+        draggable="true"
+        @dragstart="empezarArrastre($event, '/Models/Atena.glb')"
+      >
+        <div class="Icono bg-verde">
+          <img src="/public/Imagenes/Muebles/Atena.png" alt="Atena" />
+        </div>
+        <div class="Contenido">
+          <h2>Atena</h2>
+          <p>Arrastra para añadir al perro ma bacano</p>
+        </div>
+      </div>
+      <div
+        class="Card Sandro"
+        draggable="true"
+        @dragstart="empezarArrastre($event, '/Models/Sandro.glb')"
+      >
+        <div class="Icono bg-verde">
+          <img src="/public/Imagenes/Muebles/Atena.png" alt="Atena" />
+        </div>
+        <div class="Contenido">
+          <h2>Sandro</h2>
+          <p>Arrastra para añadir al vago</p>
         </div>
       </div>
 
