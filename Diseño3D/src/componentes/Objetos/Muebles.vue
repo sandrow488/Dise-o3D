@@ -128,8 +128,6 @@ const empezarArrastre = (event: DragEvent, rutaModelo: string) => {
         <ul>
           <li>Arrastra muebles desde aquí a la habitación</li>
           <li>Click y arrastra para mover muebles</li>
-          <li>Doble click para eliminar</li>
-          <li>Click Derecho + arrastrar: rotar vista</li>
           <li>Scroll: zoom</li>
         </ul>
       </div>

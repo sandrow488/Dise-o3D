@@ -2,14 +2,21 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { DragControls } from 'three/examples/jsm/controls/DragControls.js'
+let scene, camera, renderer, controls, ground
+const mueblesEnEscena = []
 
+export function limpiarEscena() {
+  mueblesEnEscena.forEach((mueble) => {
+    scene.remove(mueble);
+  });
+  mueblesEnEscena.length = 0;
+}
 export function useThreeGame(canvasRef) {
-  let scene, camera, renderer, controls, ground
+
 
   const loader = new GLTFLoader()
   const raycaster = new THREE.Raycaster()
   const mouse = new THREE.Vector2()
-  const mueblesEnEscena = []
 
   function initThree() {
     scene = new THREE.Scene()

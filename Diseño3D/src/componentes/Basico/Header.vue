@@ -1,3 +1,11 @@
+<script setup>
+import { limpiarEscena } from '../ThreeJS/useThree3D.js'
+
+function limpiarTodo() {
+  limpiarEscena()
+}
+</script>
+
 <template>
   <div class="Header">
     <div class="Titulo">
@@ -56,11 +64,3 @@
   margin-top: -5px;
 }
 </style>
-<script setup>
-function limpiarTodo() {
-  mueblesEnEscena.forEach((mueble) => {
-    scene.remove(mueble)
-  })
-  mueblesEnEscena.length = 0
-}
-</script>

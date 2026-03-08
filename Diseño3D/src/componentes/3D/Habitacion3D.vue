@@ -12,6 +12,6 @@ onMounted(() => {
 
 <template>
   <div class="Habitacion3D">
-    <canvas ref="canva" class="Canvas3D" style="width: 100%; height: 100%"></canvas>
+    <canvas ref="canva" class="Canvas3D" style="width: 99%; height: 99%"></canvas>
   </div>
 </template>
